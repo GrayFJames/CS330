@@ -10,3 +10,11 @@ before_install:
 
 script:
  - bundle exec rspec
+ 
+deploy:
+ provider: heroku
+ api_key: f233ea83-7fe8-4e5b-9256-554c5c8564d3
+ app: lit-depths-70568
+ run: "rake db:migrate"
+ on:
+  branch: main_or_master
