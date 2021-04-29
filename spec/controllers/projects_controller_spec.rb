@@ -118,8 +118,8 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe "PUT #update" do
+    login_user
     context "with valid params" do
-      login_user
       let(:new_attributes) {
         
       }
@@ -148,6 +148,7 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    login_user
     scenario 
   end
 
