@@ -31,13 +31,9 @@ RSpec.describe ProjectsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Project. As you add validations to Project, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) { {title: "Test Title", description: "Test desc"} }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) { {title: "", description: ""} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -45,6 +41,7 @@ RSpec.describe ProjectsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "MyController" do
+
     login_user
 
     it "should have a current_user" do
@@ -60,43 +57,58 @@ RSpec.describe ProjectsController, type: :controller do
 
 
   describe "GET #index" do
+
     login_user
+
     it "returns a success response" do
       Project.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
+
   end
 
   describe "GET #show" do
+
     login_user
+
     it "returns a success response" do
       project = Project.create! valid_attributes
       get :show, params: {id: project.to_param}, session: valid_session
       expect(response).to be_successful
     end
+
   end
 
   describe "GET #new" do
-  login_user
+
+    login_user
+
     it "returns a success response" do
       get :new, params: {}, session: valid_session
       expect(response).to be_successful
     end
+
   end
 
   describe "GET #edit" do
+
     login_user
+
     it "returns a success response" do
       project = Project.create! valid_attributes
       get :edit, params: {id: project.to_param}, session: valid_session
       expect(response).to be_successful
     end
+
   end
 
   describe "POST #create" do
+
+    login_user
+
     context "with valid params" do
-      login_user
+
       it "creates a new Project" do
         expect {
           post :create, params: {project: valid_attributes}, session: valid_session
@@ -104,52 +116,72 @@ RSpec.describe ProjectsController, type: :controller do
       end
 
       it "redirects to the created project" do
+
         post :create, params: {project: valid_attributes}, session: valid_session
         expect(response).to redirect_to(Project.last)
+
       end
+
     end
 
     context "with invalid params" do
+
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {project: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to_not be_successful
       end
+
     end
+
   end
 
   describe "PUT #update" do
     login_user
     context "with valid params" do
+
       let(:new_attributes) {
-        
+        {title: "Updated Title", description: "Updated desc"}
       }
 
       it "updates the requested project" do
+
         project = Project.create! valid_attributes
         put :update, params: {id: project.to_param, project: new_attributes}, session: valid_session
         project.reload
         skip("Add assertions for updated state")
+
       end
 
       it "redirects to the project" do
+
         project = Project.create! valid_attributes
         put :update, params: {id: project.to_param, project: valid_attributes}, session: valid_session
         expect(response).to redirect_to(project)
+
       end
+
     end
 
     context "with invalid params" do
+
       it "returns a success response (i.e. to display the 'edit' template)" do
+
         project = Project.create! valid_attributes
         put :update, params: {id: project.to_param, project: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
+        expect(response).to_not be_successful
+
       end
+
     end
+
   end
 
   describe "DELETE #destroy" do
-    login_user
-    scenario 
+
+    it "should successfully delete the project" do
+      project = Project.create! valid_attributes
+    end
+
   end
 
 end
