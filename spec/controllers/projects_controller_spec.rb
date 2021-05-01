@@ -136,7 +136,9 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe "PUT #update" do
+
     login_user
+
     context "with valid params" do
 
       let(:new_attributes) {
@@ -178,8 +180,12 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe "DELETE #destroy" do
 
-    it "should successfully delete the project" do
-      project = Project.create! valid_attributes
+    login_user
+
+    context "with valid id" do
+
+      
+
     end
 
   end
