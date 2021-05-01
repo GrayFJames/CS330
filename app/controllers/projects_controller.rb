@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  ACTIONS_TO_SHOW_WITHOUT_AUTH = [:index,:show]
+  before_action :authenticate_user!, except: ACTIONS_TO_SHOW_WITHOUT_AUTH
 
   # GET /projects or /projects.json
   def index
@@ -67,4 +68,5 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:title, :description)
     end
+
 end
