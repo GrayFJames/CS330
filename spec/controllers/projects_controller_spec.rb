@@ -182,9 +182,11 @@ RSpec.describe ProjectsController, type: :controller do
 
     login_user
 
-    context "with valid id" do
+    it "should delete the Project" do
 
-      
+      project = Project.create! valid_attributes
+      put :destroy, params:{id: project.to_param, project: valid_attributes}, session: valid_session
+      expect(response).to_not be_successful
 
     end
 
