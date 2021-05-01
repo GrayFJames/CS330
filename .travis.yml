@@ -17,4 +17,4 @@ deploy:
  app: lit-depths-70568
  run: "rake db:migrate"
  on:
-  branch: main_or_master
+  all_branches: true
