@@ -10,16 +10,44 @@
   </head>
 
   <body>
+
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to "Hi, #{current_user.email}", edit_user_registration_path %></li>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="/">Portfolio Projects</a>
+          <form class="form-inline">
+            <a class="btn btn-outline-secondary" href="/" role="button">Home</a>
+            <div style="padding-left: 10px;">
+              <a class="btn btn-outline-primary" href="/users/edit" role="button">Profile</a>
+            </div>
+            <div style="padding-left: 10px;">
+              <a class="btn btn-outline-success" data-method="delete" href="/users/sign_out" role="button">Sign out</a>
+            </div>
+          </form>
+        </nav>
+    
+        <!-- <li><%= link_to "Hi, #{current_user.email}", edit_user_registration_path %></li> -->
+        <!-- <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li> -->
       <% else %>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li> 
+          <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/">Portfolio Projects</a>
+            <form class="form-inline">
+              <a class="btn btn-outline-secondary" href="/" role="button">Home</a>
+              <div style="padding-left: 10px;">
+                <a class="btn btn-outline-primary" href="/users/sign_in" role="button">Sign in</a>
+              </div>
+              <div style="padding-left: 10px;">
+                <a class="btn btn-outline-success" href="/users/sign_up" role="button">Sign up</a>
+              </div>
+            </form>
+          </nav>
+    
+        <!-- <li><%= link_to "Sign in", new_user_session_path %></li> -->
+        <!-- <li><%= link_to "Sign up", new_user_registration_path %></li> -->
       <% end %>
     </ul>
     
     <%= yield %>
   </body>
+
 </html>
