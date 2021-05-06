@@ -15,10 +15,8 @@
           <h1><%= project.title %></h1>
           <p><%= project.description %></p>
           <%= link_to 'View', project, :class => "btn btn-sm btn-outline-info"%>
-          <% if user_signed_in? %>
-            <%= link_to 'Edit', edit_project_path(project), :class => "btn btn-sm btn-outline-warning"%>
-            <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-outline-danger"%>
-          <% end %>
+          <%= link_to 'Edit', edit_project_path(project), :class => "btn btn-sm btn-outline-warning"%>
+          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-outline-danger"%>
         </div>
       </div>
     <% end %> 
